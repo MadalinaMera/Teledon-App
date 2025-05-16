@@ -1,0 +1,37 @@
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.openjfx:javafx-controls:17.0.2'
+  implementation 'org.openjfx:javafx-fxml:17.0.2'
+  implementation project (':TeledonModel')
+  implementation project (':TeledonServices')
+  implementation project (':TeledonNetworking')
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
+}
+
+def osName = org.gradle.internal.os.OperatingSystem.current().getName().toLowerCase()
+def platform = osName.contains('win') ? 'windows' : osName.contains('mac') ? 'mac' : 'linux'
+
+javafx {
+  version = "17.0.2"
+  modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+run {
+  jvmArgs = [
+          "--module-path", configurations.runtimeClasspath.asPath,
+          "--add-modules", "javafx.controls,javafx.fxml"
+  ]
+}
+
+application{
+  mainClass = "StartJsonClientFX"
+}

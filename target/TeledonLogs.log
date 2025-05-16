@@ -1,0 +1,14 @@
+09 mai 2025 11:24:38,499 INFO  teledon.StartJsonServer 30 main - Server properties set. {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd} 
+09 mai 2025 11:24:38,504 INFO  teledon.persistence.database.CharityCaseDBRepository 21 <init> - Initializing CharityCaseDBRepository with properties: {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd}
+09 mai 2025 11:24:38,507 INFO  teledon.persistence.database.DonationDBRepository 28 <init> - Initializing DonorDBRepository with properties: {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd}
+09 mai 2025 11:24:38,511 DEBUG teledon.StartJsonServer 49 main - Starting server on port: 55556
+09 mai 2025 11:24:38,512 DEBUG teledon.networking.utils.AbsConcurrentServer 13 <init> - Concurrent AbstractServer
+09 mai 2025 11:24:38,512 INFO  teledon.networking.utils.TeledonJsonConcurrentServer 16 <init> - Chat-ChatJsonConcurrentServer
+09 mai 2025 11:24:38,562 INFO  teledon.networking.utils.AbstractServer 23 start - Waiting for clients ...
+14 mai 2025 10:17:43,427 INFO  teledon.StartJsonServer 30 main - Server properties set. {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd} 
+14 mai 2025 10:17:43,434 INFO  teledon.persistence.database.CharityCaseDBRepository 21 <init> - Initializing CharityCaseDBRepository with properties: {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd}
+14 mai 2025 10:17:43,437 INFO  teledon.persistence.database.DonationDBRepository 28 <init> - Initializing DonorDBRepository with properties: {teledon.server.port=55556, teledon.jdbc.url=jdbc:sqlite:C:\Users\Mada\IdeaProjects\mpp-proiect-java-MadalinaMera\teledon_bd}
+14 mai 2025 10:17:43,442 DEBUG teledon.StartJsonServer 49 main - Starting server on port: 55556
+14 mai 2025 10:17:43,443 DEBUG teledon.networking.utils.AbsConcurrentServer 13 <init> - Concurrent AbstractServer
+14 mai 2025 10:17:43,443 INFO  teledon.networking.utils.TeledonJsonConcurrentServer 16 <init> - Chat-ChatJsonConcurrentServer
+14 mai 2025 10:17:43,490 INFO  teledon.networking.utils.AbstractServer 23 start - Waiting for clients ...

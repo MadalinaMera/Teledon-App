@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'teledon'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application{
+   mainClass = 'teledon.StartJsonServer'}
+
+dependencies {
+    implementation project (':TeledonModel')
+    implementation project (':TeledonPersistence')
+    implementation project (':TeledonServices')
+    implementation project (':TeledonNetworking')
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto
+    implementation("org.springframework.security:spring-security-crypto:6.4.5")
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
+    implementation 'commons-logging:commons-logging:1.2'
+}
+
+test {
+    useJUnitPlatform()
+}

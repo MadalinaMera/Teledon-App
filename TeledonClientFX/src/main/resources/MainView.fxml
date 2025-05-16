@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="333.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.TeledonController">
+   <children>
+      <TableView fx:id="charityCasesTable" layoutX="32.0" layoutY="82.0" prefHeight="200.0" prefWidth="223.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="142.4000244140625" text="Name" />
+          <TableColumn fx:id="sumColumn" text="Total Sum" />
+        </columns>
+      </TableView>
+      <Label layoutX="52.0" layoutY="23.0" prefHeight="58.0" prefWidth="182.0" text="Charity Cases" textFill="#a64141">
+         <font>
+            <Font name="Britannic Bold" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" layoutX="424.0" layoutY="82.0" onKeyTyped="#searchDonor"/>
+      <TextField fx:id="addressField" layoutX="424.0" layoutY="117.0" />
+      <TextField fx:id="phoneNumberField" layoutX="425.0" layoutY="151.0" />
+      <TextField fx:id="donatedSumField" layoutX="426.0" layoutY="187.0" />
+      <Label layoutX="358.0" layoutY="81.0" prefHeight="26.0" prefWidth="74.0" text="Name:" textFill="#a64141">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="341.0" layoutY="116.0" prefHeight="26.0" prefWidth="74.0" text="Address:" textFill="#a64141">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="289.0" layoutY="150.0" prefHeight="26.0" prefWidth="116.0" text="Phone number:" textFill="#a64141">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="300.0" layoutY="187.0" prefHeight="26.0" prefWidth="116.0" text="Donated sum:" textFill="#a64141">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Button fx:id="addDonationButton" layoutX="349.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleAddDonation" prefHeight="44.0" prefWidth="150.0" text="Add Donation" textFill="#a64141">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <ListView fx:id="filteredDonorsList" layoutX="600.0" layoutY="77.0" prefHeight="200.0" prefWidth="223.0" />
+      <Button fx:id="logOutButton" layoutX="744.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleLogout" text="Log Out" textFill="#a64141">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
