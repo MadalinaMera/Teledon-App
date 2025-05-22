@@ -13,10 +13,13 @@ import teledon.persistence.database.CharityCaseDBRepository;
 import teledon.persistence.database.DonationDBRepository;
 import teledon.persistence.database.DonorDBRepository;
 import teledon.persistence.database.VolunteerDBRepository;
+import teledon.persistence.hibernate.CharityCaseHibernateRepository;
+import teledon.persistence.hibernate.VolunteerHibernateRepository;
 import teledon.persistence.interfaces.ICharityCaseRepository;
 import teledon.persistence.interfaces.IDonationRepository;
 import teledon.persistence.interfaces.IDonorRepository;
 import teledon.persistence.interfaces.IVolunteerRepository;
+import teledon.persistence.utils.HibernateUtils;
 import teledon.server.ServicesImpl;
 import teledon.services.ITeledonServices;
 
@@ -35,11 +38,17 @@ public class StartJsonServer {
             logger.debug("Looking for file in "+(new File(".")).getAbsolutePath());
             return;
         }
-        IVolunteerRepository userRepo=new VolunteerDBRepository(serverProps);
-        ICharityCaseRepository charityCaseRepo=new CharityCaseDBRepository(serverProps);
+        //IVolunteerRepository userRepo=new VolunteerDBRepository(serverProps);
+        //ICharityCaseRepository charityCaseRepo=new CharityCaseDBRepository(serverProps);
+        IVolunteerRepository userRepo = new VolunteerHibernateRepository();
+        logger.info("Volunteer repository: Hibernate");
+        ICharityCaseRepository charityCaseRepo = new CharityCaseHibernateRepository();
+        logger.info("CharityCase repository: Hibernate");
         IDonorRepository donorRepository=new DonorDBRepository(serverProps);
+        logger.info("Donor repository: JDBC");
         IDonationRepository donationRepository=new DonationDBRepository(serverProps, donorRepository, charityCaseRepo);
-        ITeledonServices ServicesImpl=new ServicesImpl(userRepo,charityCaseRepo,donationRepository,donorRepository);
+        logger.info("Donation repository: JDBC");
+        ITeledonServices services=new ServicesImpl(userRepo,charityCaseRepo,donationRepository,donorRepository);
         int chatServerPort=defaultPort;
         try {
             chatServerPort = Integer.parseInt(serverProps.getProperty("teledon.server.port"));
@@ -48,11 +57,15 @@ public class StartJsonServer {
             logger.debug("Using default port "+defaultPort);
         }
         logger.debug("Starting server on port: "+chatServerPort);
-        AbstractServer server = new TeledonJsonConcurrentServer(chatServerPort, ServicesImpl);
+        AbstractServer server = new TeledonJsonConcurrentServer(chatServerPort, services);
         try {
             server.start();
         } catch (ServerException e) {
             logger.error("Error starting the server" + e.getMessage());
+        } finally {
+            logger.info("Shutting down server ...");
+            HibernateUtils.closeSessionFactory();
+            logger.info("Server shut down. Hibernate session factory closed.");
         }
 
     }

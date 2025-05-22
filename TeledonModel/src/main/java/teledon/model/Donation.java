@@ -1,11 +1,11 @@
 package teledon.model;
 import java.util.Objects;
 
-public class Donation extends Entity<Integer>{
+public class Donation implements Entity<Integer>{
     private Donor donor;
     private CharityCase charityCase;
     private int sum;
-
+    private Integer id;
     public Donation(Donor donor, CharityCase charityCase, int sum) {
         this.donor = donor;
         this.charityCase = charityCase;
@@ -34,6 +34,16 @@ public class Donation extends Entity<Integer>{
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

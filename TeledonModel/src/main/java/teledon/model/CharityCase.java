@@ -1,16 +1,27 @@
 package teledon.model;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 import java.util.Objects;
 
-public class CharityCase extends Entity<Integer> {
+@Entity
+@Table(name = "charity_cases")
+public class CharityCase implements teledon.model.Entity<Integer> {
     private String name;
     private Integer totalSum;
+    private Integer id;
+    public CharityCase() {
+        id = 0;
+        name = "default";
+        totalSum = 0;
+    }
 
     public CharityCase(String name, Integer totalSum) {
         this.name = name;
         this.totalSum = totalSum;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -19,12 +30,24 @@ public class CharityCase extends Entity<Integer> {
         this.name = name;
     }
 
+    @Column(name = "total_sum")
     public Integer getTotalSum() {
         return totalSum;
     }
 
     public void setTotalSum(Integer totalSum) {
         this.totalSum = totalSum;
+    }
+    @Override
+    public void setId(Integer id) {
+        this.id=id;
+    }
+    @Override
+    @Id
+    @GeneratedValue(generator="increment")
+    @Column(name = "id_case")
+    public Integer getId() {
+        return id;
     }
 
     @Override

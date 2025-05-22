@@ -1,10 +1,10 @@
 package teledon.model;
 
-public class Donor extends Entity<Integer>{
+public class Donor implements Entity<Integer>{
     private String name;
     private String address;
     private String phone;
-
+    private Integer id;
     public Donor(String name, String address, String phone) {
         this.name = name;
         this.address = address;
@@ -33,6 +33,16 @@ public class Donor extends Entity<Integer>{
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override
