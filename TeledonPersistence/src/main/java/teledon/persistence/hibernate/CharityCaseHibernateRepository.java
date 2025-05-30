@@ -1,12 +1,13 @@
 package teledon.persistence.hibernate;
 
+import org.springframework.stereotype.Repository;
 import org.hibernate.Session;
 import teledon.model.CharityCase;
 import teledon.persistence.interfaces.ICharityCaseRepository;
 import teledon.persistence.utils.HibernateUtils;
 
 import java.util.Objects;
-
+@Repository
 public class CharityCaseHibernateRepository implements ICharityCaseRepository {
     public CharityCase findOne(Integer id){
         try (Session session = HibernateUtils.getSessionFactory().openSession()) {
